@@ -1,27 +1,22 @@
 console.log('Starting app.js');
 
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
+
 const notes = require('./notes.js');
 
-var user = os.userInfo();
+var command = process.argv[2];
+console.log(`Command:`, command);
 
-//console.log(user);
-
-console.log('Result: ' + notes.add(5,-2));
-
-// // Mit Template String
-// fs.appendFile('greetings.txt', `Hello Welcome Mr.${user.username}! You are ${notes.age}.`,function(err) {
-//   if(err) {
-//     console.log('Unable to write file.');
-//   }
-// });
-
-/*
-// Ohne Template String, mit konkatenieren
-fs.appendFile('greetings.txt', 'Hello Welcome Mr.' + user.username + '!',function(err) {
-  if(err) {
-    console.log('Unable to write file.');
-  }
-});
-*/
+if(command == 'add') {
+  console.log('Adding Note.')
+  notes.addNote();
+} else if(command == 'list') {
+  console.log('Listing All Notes.')
+} else if(command == 'read') {
+  console.log('Reading Specific Note')
+} else if(command == 'remove') {
+  console.log('Remove Specific Note')
+} else {
+  console.log('Cant find Command.')
+}
