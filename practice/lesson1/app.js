@@ -15,16 +15,22 @@ console.log(`Yarg Argv:`, argv);
 
 if(command == 'add') {
   console.log('Adding Note.')
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if(note) {
+    console.log('Note:',note.title);
+  } else {
+    console.log(`Note with the title already exist`)
+  }
 } else if(command == 'list') {
-  console.log('Listing All Notes.')
+  console.log('Listing All Notes.');
   notes.getAll();
 } else if(command == 'read') {
   notes.getNote(argv.title);
-  console.log('Reading Specific Note')
+  console.log('Reading Specific Note');
 } else if(command == 'remove') {
-  notes.removeNote(argv.title);
-  console.log('Remove Specific Note')
+  var removed = notes.removeNote(argv.title);
+  var message = removed ? 'Note was removed' : 'Note not found';
+  console.log(message);
 } else {
-  console.log('Cant find Command.')
+  console.log('Cant find Command.');
 }
