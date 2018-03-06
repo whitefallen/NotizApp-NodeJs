@@ -3,7 +3,7 @@ const fs = require('fs');
 /**
  * [fetchNotes gets all Note from Json file]
  * @method fetchNotes
- * @return {array}   [description]
+ * @return {Array}   [description]
  */
 var fetchNotes = () => {
   try{
@@ -18,7 +18,7 @@ var fetchNotes = () => {
 /**
  * [saveNotes saves a Note to the Json File]
  * @method saveNotes
- * @param  {array}  notes [Array of Note Objects]
+ * @param  {Array}  notes [Array of Note Objects]
  */
 var saveNotes = (notes) => {
   fs.writeFileSync('notes-data.json', JSON.stringify(notes));
@@ -27,9 +27,9 @@ var saveNotes = (notes) => {
 /**
  * [addNote adds a Note to the Note Array]
  * @method addNote
- * @param  {string} title [description]
- * @param  {string} body  [description]
- * @return {array}       [description]
+ * @param  {String} title [description]
+ * @param  {String} body  [description]
+ * @return {Array}       [description]
  */
 var addNote = function(title, body) {
   console.log('Adding Note:', title, body);
@@ -51,7 +51,7 @@ var addNote = function(title, body) {
 /**
  * [getAll returns all Notes from the array]
  * @method getAll
- * @return {array} [array of Note objects]
+ * @return {Array} [array of Note objects]
  */
 var getAll = () => {
   console.log('Getting all notes');
@@ -61,8 +61,8 @@ var getAll = () => {
 /**
  * [getNote returns a single Note from the array]
  * @method getNote
- * @param  {string} title [description]
- * @return {object}       [description]
+ * @param  {String} title [description]
+ * @return {Object}       [description]
  */
 var getNote = (title) => {
   console.log('Getting Note:', title);
@@ -74,8 +74,8 @@ var getNote = (title) => {
 /**
  * [removeNote removes a Note from the Array and Saves the rest to the Json File]
  * @method removeNote
- * @param  {string}   title [description]
- * @return {boolean}         [description]
+ * @param  {String}   title [description]
+ * @return {Boolean}         [description]
  */
 var removeNote = (title) => {
   console.log('Remove Note:', title);
@@ -85,12 +85,21 @@ var removeNote = (title) => {
   return filteredNotes.length !== notes.length;
 };
 
+/**
+ * [logNote Prints Note Details to the Console]
+ * @method logNote
+ * @param  {Object} note [description]
+ */
 var logNote = (note) => {
   console.log(`---`);
   console.log(`Title: ${note.title}`);
   console.log(`Body: ${note.body}`);
 }
 
+/**
+ * [exports]
+ * @type {Object}
+ */
 module.exports = {
   //addNote: addNote
   addNote,

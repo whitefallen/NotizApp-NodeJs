@@ -1,13 +1,57 @@
+// NPM Modules
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
 
+// Custom Module
 const notes = require('./notes.js');
 
-const argv =  yargs.argv;
+/**
+ * [titleOption Tile Yargs Option Object]
+ * @type {Object}
+ */
+const titleOption = {
+  describe: 'Tile of Note',
+  demand: true,
+  alias: 't'
+};
 
-var command = process.argv[2];
+/**
+ * [bodyOption Body Yargs Option Object]
+ * @type {Object}
+ */
+const bodyOption = {
+  describe: 'Content of Note',
+  demand: true,
+  alias: 'b'
+}
 
+/**
+ * [argv Collection of Possible Arguments]
+ * @type {Array}
+ */
+const argv =  yargs
+  .command('add','Add a new note', {
+    title: titleOption,
+    body: bodyOption
+  })
+  .command('list', 'Lists all Notes')
+  .command('read', 'Read a Note', {
+    title: titleOption
+  })
+  .command('remove', 'Remove a Note', {
+    title: titleOption
+  })
+  .help()
+  .argv;
+
+/**
+ * [command The Actuall Command]
+ * @type {String}
+ */
+var command = argv._[0];
+
+// If-Cases to Determine the Action
 if(command == 'add') {
   console.log('Adding Note.')
   var note = notes.addNote(argv.title, argv.body);
