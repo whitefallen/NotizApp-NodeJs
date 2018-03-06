@@ -1,0 +1,3 @@
+- Make the App a Executable
+- Add a Grafical User Interface to the app
+- Translate Actions from Gui to Note Logic e.g "+" Sign for the Add Command
