@@ -26,3 +26,4 @@ Remove a Specific Note
 You can type --help after every Command to get the Syntax and more information for these Commands
 `node app.js --help`
 `node app.js <command> --help`
+
